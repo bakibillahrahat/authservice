@@ -60,7 +60,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserInfo userInfo = new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>());
         userRepository.save(userInfo);
         // pushEventToQueue
-        userInfoProducer.sendEventToKafka(userInfoDto, userId);
+        userInfoProducer.sendEventToKafka(userInfoEventToPublish(userInfoDto, userId));
         return userId;
     }
 

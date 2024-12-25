@@ -29,8 +29,4 @@ public class UserInfoProducer {
         kafkaTemplate.send(message);
     }
 
-    public void sendEventToKafka(UserInfoDto userInfoDto, String userId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sendEventToKafka'");
-    }
 }

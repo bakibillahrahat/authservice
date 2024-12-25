@@ -41,11 +41,11 @@ public class AuthController {
             String jwtToken = jwtService.GenerateToken(userInfoDto.getUsername());
             return new ResponseEntity<>(JwtResponseDTO.builder().accessToken(jwtToken).token(refreshToken.getToken()).userId(userId).build(), HttpStatus.OK);
         }catch (Exception ex){
-            return new ResponseEntity<>("Exception in User Service", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(ex.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/auth/v1/ping")
+   @GetMapping("/auth/v1/ping")
     public ResponseEntity<String> ping() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
