@@ -41,7 +41,8 @@ public class AuthController {
             String jwtToken = jwtService.GenerateToken(userInfoDto.getUsername());
             return new ResponseEntity<>(JwtResponseDTO.builder().accessToken(jwtToken).token(refreshToken.getToken()).userId(userId).build(), HttpStatus.OK);
         }catch (Exception ex){
-            return new ResponseEntity<>(ex.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
+            ex.printStackTrace();
+            return new ResponseEntity<>("User found exception!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

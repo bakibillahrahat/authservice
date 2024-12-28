@@ -12,9 +12,9 @@ import org.mbr.authservice.entities.UserInfo;
 @NoArgsConstructor
 public class UserInfoDto extends UserInfo {
     @NonNull
-    private String username;
+    private String firstName;
     @NonNull
-    private String lastname;
+    private String lastName;
     private Long phoneNumber;
     private String email;
 }
